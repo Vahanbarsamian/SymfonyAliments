@@ -23,7 +23,7 @@ class AlimentsFixtures extends Fixture
         $a2 = new Aliment();
         $a2->setNom('Patate')
             ->setPrix(1.81)
-            ->setImage("/public/img/aliments/patate.jpg")
+            ->setImage("/public/img/aliments/patate.png")
             ->setCalorie(73)
             ->setProteine(1.8)
             ->setGlucide(20)
