@@ -19,22 +19,24 @@ class AlimentRepository extends ServiceEntityRepository
         parent::__construct($registry, Aliment::class);
     }
 
-    // /**
-    //  * @return Aliment[] Returns an array of Aliment objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Personnal select filter by calories
+     * 
+     * @param float $calorie passed by controller
+     * 
+     * @return Aliment[] Returns an array of Aliment objects
+     */
+    public function findByFilter($type,$signe,$value)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
+            ->andWhere('a.'.$type.' '.$signe.' :val')
             ->setParameter('val', $value)
             ->orderBy('a.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Aliment
