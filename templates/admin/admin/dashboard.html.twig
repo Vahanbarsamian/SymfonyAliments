@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	/ Dashboard Aliments
+{% endblock %}
+
+{% block titre %}
+	{{titre}}
+{% endblock %}
+{% block body %}
+	<table class="table table-hover table-striped">
+		<thead class="thead-dark text-center">
+            <div class="fa-pull-right p-2"><a href="{{path('add_aliment')}}" class="btn btn-success">Ajouter un aliment</a></div>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Image</th>
+				<th scope="col">Calories</th>
+				<th scope="col">Proteines</th>
+				<th scope="col">Glucides</th>
+				<th scope="col">Lipides</th>
+				<th scope="col">Prix moyen ( au Kg )</th>
+				<th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for aliment in aliments %}
+				<tr class="text-center">
+					<td class="align-middle">{{aliment.id}}</td>
+					<td class="align-middle">{{aliment.nom}}</td>
+					<td style="width:5%"><img style="height: 65px;width:100%" src="{{asset('/img/aliments/'~ aliment.nom|lower ~'.png')}}"></td>
+					<td class="align-middle">{{aliment.calorie|number_format(2)}}</td>
+					<td class="align-middle">{{aliment.proteine|number_format(2)}}</td>
+					<td class="align-middle">{{aliment.glucide|number_format(2)}}</td>
+					<td class="align-middle">{{aliment.lipide|number_format(2)}}</td>
+					<td class="align-middle">{{aliment.prix|number_format(2)}}</td>
+					<td class="align-middle admin-supr">
+						<a href="{{path('modify_aliment',{'id':aliment.id })}}" class="btn btn-warning">Modifier</a>
+						<form action="{{path('remove_aliment',{'id':aliment.id})}}" method="post" class="d-inline-block" onsubmit = "return confirm('Confirmer la suppression ?')">
+							<input type="hidden" name="_method" value="DELETE">
+							<input type="hidden" name="_token" value="{{csrf_token('DELETE' ~ aliment.id)}}">
+							<input type="submit" value="Supprimer" class="btn btn-danger">
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

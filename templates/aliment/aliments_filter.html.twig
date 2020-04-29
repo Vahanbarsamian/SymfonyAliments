@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	/
+	{{titre}}
+{% endblock %}
+
+{% block titre %}
+	{{titre}}
+{% endblock %}
+
+{% block body %}
+	<div class="ml-3 p-3">
+		<a href="{{path('list_aliment')}}" class="btn btn-primary rounded p-2">Tous</a>
+	</div>
+	<div class="row align-items-center my-5">
+		{% for aliment in aliments %}
+			<div class="col-sm-12 col-md-6 col-lg-2 mx-2 p-4 mx-auto">
+				<div class="card mb-3">
+					<h3 class="card-header">{{aliment.nom}}</h3>
+					<div class="card-body">
+						<h5 class="card-title">Caracteristiques :</h5>
+						<h6 class="card-subtitle text-muted">Apport nutritionnel</h6>
+					</div>
+					<img style="height: 200px; display: block;" class="p-2 rounded img-fluid mx-auto d-block" src="{{asset('/img/aliments/'~ aliment.nom|lower ~'.png')}}">
+					<div class="card-body  text-center">
+						<p class="card-text">valeurs exprimées pour 100g</p>
+					</div>
+					<ul class="list-group list-group-flush text-center">
+						<li class="list-group-item">Calories :
+							{{aliment.calorie }}</li>
+						<li class="list-group-item">Proteines :
+							{{aliment.proteine }}</li>
+						<li class="list-group-item">Glucides :
+							{{aliment.glucide }}</li>
+						<li class="list-group-item">Lipides :
+							{{aliment.lipide }}</li>
+					</ul>
+					<div class="card-body">
+						<em>
+							<a href="#">En savoir plus
+								<i class="far fa-caret-square-down"></i>
+							</a>
+						</em>
+					</div>
+					<div class="card-footer text-muted text-right">
+						Prix moyen (kg) :
+						{{aliment.prix}}
+						€
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
