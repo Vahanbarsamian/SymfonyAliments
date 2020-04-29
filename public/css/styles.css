@@ -1,0 +1,8 @@
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: #3f3f3d;
+    color:white;
+}
+.admin-supr{
+    width:20%;
+}
