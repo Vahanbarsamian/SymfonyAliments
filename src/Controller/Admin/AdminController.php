@@ -52,6 +52,10 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($aliment);
             $manager->flush();
+            $this->addFlash(
+            	'success',
+            	'L\'ajout d\'un aliment a bien été effectué'
+            );
             return $this->redirectToRoute("admin");
         }
         return $this->render(
@@ -86,6 +90,10 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($aliment);
             $manager->flush();
+            $this->addFlash(
+                'success',
+                'La modification a bien été effectuée'
+            );
             return $this->redirectToRoute("admin");
         }
         return $this->render(
@@ -114,10 +122,18 @@ class AdminController extends AbstractController
         Request $request,
         EntityManagerInterface $manager
     ) {
-        if ($this->isCsrfTokenValid('DELETE'.$aliment->getId(), $request->get('_token'))) {
-                $manager->remove($aliment);
-                $manager->flush();
-                return $this->redirectToRoute('admin');
+        if ($this->isCsrfTokenValid(
+            'DELETE' . $aliment->getId(),
+            $request->get('_token')
+        )
+        ) {
+            $manager->remove($aliment);
+            $manager->flush();
+            $this->addFlash(
+                'success',
+                'La suppression a bien été effectuée'
+            );
+            return $this->redirectToRoute('admin');
         }
     }
 

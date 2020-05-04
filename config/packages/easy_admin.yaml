@@ -1,0 +1,28 @@
+# config/packages/easy_admin.yaml
+# easy_admin:
+#   entities:
+#     User:
+#       list:
+#         fields:
+#           - contract
+#           - { property: 'contract', template: 'contract.html.twig' }
+#           - { property: 'contract', template: 'contract.html.twig', base_path: '%app.path.user_contracts%' }
+#     Product:
+#       list:
+#         fields:
+#           - { property: 'image', type: 'image', base_path: '%app.path.img/aliments%' }
+#           - { property: 'image', template: 'vich_uploader_image.html.twig' }
+#       show:
+#         fields:
+#           - { property: 'image', type: 'image', base_path: '%app.path.img/aliments%' }
+#       form:
+#         fields:
+#           - { property: 'imageFile', type: 'file' }
+#           - { property: 'imageFile', type: 'vich_image' }
+#           - { property: 'contractFile', type: 'vich_file' }
+#   design:
+#     form_theme:
+#           - '@EasyAdmin/form/bootstrap_4.html.twig'
+#           - '@VichUploader/Form/fields.html.twig'
+
+

@@ -8,20 +8,19 @@
 	{{titre}}
 {% endblock %}
 {% block body %}
-<div class="container mt-5">
-	<div class="row">
-		<div class="form-group col-2">
-			<img src="{{asset('/img/aliments/' ~ aliment.nom|lower ~ '.png')}}" alt="{{ aliment.image }}" class="rounded img-thumbnail img-fluid">
-		</div>
-		<div class="form-group col-10">
-			{{ form_start(form) }}
-			{{ form_row(form.nom,{"attr":{"class":"font-weight-bold"},"label":"Nom de l'aliment"})}}
-			{{ form_row(form.prix,{"label":"Prix moyen/Kg"})}}
-			{{form_widget(form)}}
-			<input type="submit" class="fa-pull-right btn btn-primary form-group" value="Enregistrer">
-			<a href="{{path('admin')}}" class="fa-pull-right btn btn-warning form-group mr-1 text-white">Retour</a>
-			{{ form_end(form) }}
+	<div class="mt-5">
+		<div class="row">
+			<div class="form-group col-2 ml-5">
+				<img src="{{ asset('img/aliments/' ~ aliment.image)}}" alt="{{ aliment.image }}" class="rounded img-thumbnail img-fluid" style="max-width:80%">
+			</div class="form-group col">
+				{{ form_start(form, {'attr': {'class': 'modify-form'}})}}
+				{{ form_row(form.nom,{"attr":{"class":"font-weight-bold"},"label":"Nom de l'aliment"})}}
+				{{ form_row(form.prix,{"label":"Prix moyen/Kg"})}}
+				{{form_widget(form)}}
+				<input type="submit" class="fa-pull-right btn btn-primary form-group" value="Enregistrer">
+				<a href="{{path('admin')}}" class="fa-pull-right btn btn-warning form-group mr-1 text-white">Annuler</a>
+				{{ form_end(form) }}
+			</div>
 		</div>
 	</div>
-</div>
 {% endblock %}
