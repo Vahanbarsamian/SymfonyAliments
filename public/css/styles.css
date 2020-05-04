@@ -6,3 +6,14 @@
 .admin-supr{
     width:20%;
 }
+.form-error-message {
+    display: ruby-text-container;
+}
+.modify-form {
+    width: 60%;
+    margin: 0 auto 0 2%;
+}
+.add-form {
+    margin: 0 auto;
+    width: 60%;
+}

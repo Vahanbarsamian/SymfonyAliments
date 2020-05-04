@@ -15,16 +15,16 @@
 		<a href="{{path('aliments-filter',{'type':'proteine','signe':'<','value':2})}}" class="btn btn-primary rounded p-2"><i class="fa fa-filter text-primary mr-3 text-light" aria-hidden="true"></i>Liste des aliments de moins de 2 proteines</a>
 		<a href="{{path('aliments-filter',{'type':'glucide','signe':'<','value':14})}}" class="btn btn-primary rounded p-2"><i class="fa fa-filter text-primary mr-3 text-light" aria-hidden="true"></i>Liste des aliments de moins de 14 glucides</a>
 	</div>
-	<div class="row align-items-center my-5">
+	<div class="row align-items-center ml-auto mr-auto my-5">
 		{% for aliment in aliments %}
-			<div class="col-sm-12 col-md-6 col-lg-2 mx-2 p-4 mx-auto">
+			<div class="col-sm-12 col-md-6 col-lg-3 p-4">
 				<div class="card mb-3">
 					<h3 class="card-header">{{aliment.nom}}</h3>
 					<div class="card-body">
 						<h5 class="card-title">Caracteristiques :</h5>
 						<h6 class="card-subtitle text-muted">Apport nutritionnel</h6>
 					</div>
-					<img style="height: 200px; display: block;" class="p-2 rounded img-fluid mx-auto d-block" src="{{asset('/img/aliments/'~ aliment.nom|lower ~'.png')}}">
+					<img style="height: 200px; display: block;" class="p-2 rounded img-fluid mx-auto d-block" src="{{asset('/img/aliments/'~ aliment.image)}}">
 					<div class="card-body  text-center">
 						<p class="card-text">valeurs exprimées pour 100g</p>
 					</div>
