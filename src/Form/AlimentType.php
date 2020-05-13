@@ -2,15 +2,17 @@
 
 namespace App\Form;
 
+use App\Entity\Type;
 use App\Entity\Aliment;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\FloatType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FloatType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class AlimentType extends AbstractType
 {
@@ -21,6 +23,14 @@ class AlimentType extends AbstractType
                 'nom',
                 TextType::class,
                 ["attr" => ["placeholder" => "Nom de l'aliment"]]
+            )
+            ->add(
+                'type',
+                EntityType::class,
+                [
+                    'class' => Type::class,
+                    'choice_label' => 'libelle',
+                ]
             )
             ->add(
                 'prix',
@@ -38,7 +48,7 @@ class AlimentType extends AbstractType
             ->add(
                 'imageSize',
                 IntegerType::class,
-                ["label" => "Taille de l'image (en Ko)","attr"=>['disabled'=>true]]
+                ["label" => "Taille de l'image (en Ko)", "attr" => ['disabled' => true]]
             )
             ->add(
                 'calorie',

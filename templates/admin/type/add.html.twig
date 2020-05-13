@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	/ Ajout d'un type d'aliment
+{% endblock %}
+
+{% block titre %}
+	{{titre}}
+{% endblock %}
+{% block body %}
+<div class="mt-5">
+	<div class="row">
+		<div class="form-group col">
+			{{ form_start (form, { 'attr':{ 'class':'modify-form' }})}}
+			{{ form_row (form.libelle, {'attr':{'class':'font-weight-bold'},'label': 'Type d\'aliment'})}}
+				{{ form_widget (form) }}
+				<input type="submit" class="fa-pull-right btn btn-primary form-group" value="Enregistrer">
+				<a href="{{path('admin_list_type')}}" class="fa-pull-right btn btn-warning form-group mr-1 text-white">Annuler</a>
+				{{ form_end (form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

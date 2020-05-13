@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	/
+	{{titre}}
+{% endblock %}
+
+{% block titre %}
+	{{titre}}
+{% endblock %}
+{% block body %}
+	<div class="row align-items-top text-center my-5">
+		{% for type in types %}
+			<div class="col-6">
+				<h2>{{type.libelle}}</h2>
+				<img src="{{asset('img/types/'~ type.image)}}" alt="image de fruits" class="img-thumbail img-fluid rounded" style="max-width:80%">
+				<div class="row align-items-center ml-auto mr-auto text-center my-5">
+					{% for aliment in type.aliments  %}
+						<div class="col">
+							<img src="{{asset('img/aliments/'~ aliment.image)}}" alt="{{aliment.nom}} class=" img-thumbail img-fluid rounded" style=" max-width:50%">
+							<a href="#"><h2>{{aliment.nom}}</h2></a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

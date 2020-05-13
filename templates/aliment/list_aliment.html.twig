@@ -37,10 +37,12 @@
 							{{aliment.glucide }}</li>
 						<li class="list-group-item">Lipides :
 							{{aliment.lipide }}</li>
+						<li class="list-group-item text-left">Famille des :
+							{{aliment.type.libelle|lower }}</li>
 					</ul>
 					<div class="card-body">
 						<em>
-							<a href="#">En savoir plus
+							<a href="{{path('list_type')}}">En savoir plus
 								<i class="far fa-caret-square-down"></i>
 							</a>
 						</em>

@@ -191,6 +191,11 @@ class Aliment
      */
     private $contractFile;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="aliments")
+     */
+    private $type;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -215,7 +220,6 @@ class Aliment
     public function setImageFile(?File $imageFile = null): self
     {
         $this->imageFile = $imageFile;
-
         if (null !== $imageFile && $this->imageFile instanceof UploadedFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
@@ -321,7 +325,7 @@ class Aliment
     /**
      * Get the value of updatedAt
      *
-     * @return  \DateTimeInterface|null
+     * @return \DateTimeInterface|null
      */
     public function getUpdatedAt()
     {
@@ -333,18 +337,15 @@ class Aliment
      *
      * @param  \DateTimeInterface|null  $updatedAt
      */
-    public function setUpdatedAt(?\DateTime $updatedAt = null)
+    public function setUpdatedAt()
     {
-        if (!$updatedAt) {
-            $updatedAt = new \Datetime('now');
-        }
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt = new \Datetime('now');
     }
 
     /**
      * Get the value of contract
      *
-     * @return  string
+     * @return string
      */
     public function getContract()
     {
@@ -354,9 +355,9 @@ class Aliment
     /**
      * Set the value of contract
      *
-     * @param  string  $contract
+     * @param string  $contract
      *
-     * @return  self
+     * @return self
      */
     public function setContract(string $contract)
     {
@@ -368,7 +369,7 @@ class Aliment
     /**
      * Get the value of contractFile
      *
-     * @return  File
+     * @return File
      */
     public function getContractFile()
     {
@@ -378,13 +379,25 @@ class Aliment
     /**
      * Set the value of contractFile
      *
-     * @param  File  $contractFile
+     * @param File  $contractFile
      *
-     * @return  self
+     * @return self
      */
     public function setContractFile(File $contractFile)
     {
         $this->contractFile = $contractFile;
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

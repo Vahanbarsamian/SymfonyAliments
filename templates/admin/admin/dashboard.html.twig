@@ -24,6 +24,7 @@
 				<th scope="col">Id</th>
 				<th scope="col">Nom</th>
 				<th scope="col">Image</th>
+				<th scope="col">Type aliment</th>
 				<th scope="col">Calories</th>
 				<th scope="col">Proteines</th>
 				<th scope="col">Glucides</th>
@@ -38,6 +39,7 @@
 					<td class="align-middle">{{aliment.id}}</td>
 					<td class="align-middle">{{aliment.nom}}</td>
 					<td style="width:5%"><img style="height: 65px;width:100%" src="{{ asset('img/aliments/' ~ aliment.image)}}"></td>
+					<td class="align-middle">{{aliment.type.libelle|lower}}</td>
 					<td class="align-middle">{{aliment.calorie|number_format(2)}}</td>
 					<td class="align-middle">{{aliment.proteine|number_format(2)}}</td>
 					<td class="align-middle">{{aliment.glucide|number_format(2)}}</td>
