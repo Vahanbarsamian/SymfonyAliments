@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	/
+	{{titre}}
+{% endblock %}
+{% block titre %}
+	{{ titre }}
+{% endblock %}
+
+{% block body %}
+	<div class="mt-5">
+		{{ form_start(form,{'attr':{'class':'modify-form ml-auto'}})}}
+		{{ form_row(form.username,{
+			'attr':{'placeholder':'Veuillez saisir votre identifiant'},
+			'label':"Login"
+		})}}
+		{{ form_row(form.password,{'attr':{'placeholder':'Veuillez saisir votre mot de passe'}}) }}
+		{{ form_row(form.verificationPassword,{'attr':{'placeholder':'Veuillez confirmer votre mot de passe'}}) }}
+		<input type="submit" class="fa-pull-right btn btn-primary form-group" value="Envoyer">
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	/
+	{{titre}}
+{% endblock %}
+{% block titre %}
+	{{ titre }}
+{% endblock %}
+
+{% block body %}
+	{% if error %}
+		<div class="alert alert-danger" role="alert">
+			<strong>{{error.messageKey | trans(error.messagedata,'security')}}</strong>
+		</div>
+	{% endif %}
+	<div class="row mt-5">
+		<div class="col-3 mx-auto">
+			<form class="modify-form mx-auto" action={{path('login')}} method="post">
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" class="form-control" id="username" name="_username" required>
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" name="_password" required>
+				</div>
+				<input type="hidden" name="_target_path" value="{{path('list_aliment')}}"/>
+				<input type="submit" class="btn btn-primary fa-pull-right" value="Soumettre">
+			</form>
+		</div>
+	</div>
+
+</div>{% endblock %}

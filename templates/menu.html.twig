@@ -10,21 +10,41 @@
 				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Aliments</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="{{path('list_aliment')}}">Liste des aliments</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="{{path('admin')}}">Administration</a>
+					{# {% if app.user %} verifie que l'utilisateur est connecté mais pas son role #}
+					{% if is_granted('ROLE_ADMIN') %}
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{{path('admin')}}">Administration</a>
+					{% endif %}
 				</div>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Types</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="{{path('list_type')}}">Types d'aliments</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="{{path('admin_list_type')}}">Administration</a>
+					{# {% if app.user %} verifie juste si connecté pas le role #}
+					{% if is_granted('ROLE_ADMIN') %}
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{{path('admin_list_type')}}">Administration</a>
+					{% endif %}
 				</div>
 			</li>
 		</ul>
+		<ul class="navbar-nav ml-auto">
+			{% if not app.user %}
+				<li class="nav-item ">
+					<a class="nav-link" href="{{path('inscription')}}">Inscription</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('login')}}" class="nav-link">login</a>
+				</li>
+			{% else %}
+				<li class="nav-item ">
+					<a href="{{path('unlog')}}" class="nav-link">unlog</a>
+				</li>
+			{% endif %}
+		</ul>
 		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="text" placeholder="Search">
+			<input class="form-control mr-sm-2 ml-5" type="text" placeholder="Search">
 			<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 		</form>
 	</div>
